@@ -8,7 +8,7 @@ export default function useAuth() {
     const router = useRouter();
 
     const signUp = async (email: string, password: string) => {
-        await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
             email,
             password,
             options: {
@@ -16,18 +16,22 @@ export default function useAuth() {
             },
         });
         router.refresh();
+
+        return error;
     };
 
     const signInWithPassword = async (email: string, password: string) => {
-        await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
         router.refresh();
+
+        return error;
     };
 
     const signInWithGoogle = async () => {
-        await supabase.auth.signInWithOAuth({
+        const { error } = await supabase.auth.signInWithOAuth({
             provider: "google",
             options: {
                 redirectTo: `${location.origin}/auth/callback`,
@@ -38,11 +42,15 @@ export default function useAuth() {
             },
         });
         router.refresh();
+
+        return error;
     };
 
     const signOut = async () => {
-        await supabase.auth.signOut();
+        const { error } = await supabase.auth.signOut();
         router.refresh();
+
+        return error;
     };
 
     return { signUp, signInWithPassword, signInWithGoogle, signOut };

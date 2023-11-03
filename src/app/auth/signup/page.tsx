@@ -8,10 +8,13 @@ export default function SignupPage() {
     const { signUp } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
-        signUp(email, password);
+
+        const error = await signUp(email, password);
+        setErrorMessage(error ? error.message : "");
     };
 
     return (
@@ -37,6 +40,15 @@ export default function SignupPage() {
                 <Typography variant="h6" textAlign="center">
                     Sign up
                 </Typography>
+                {errorMessage.length > 0 && (
+                    <Typography
+                        variant="body2"
+                        color="error"
+                        textAlign="center"
+                    >
+                        {errorMessage}
+                    </Typography>
+                )}
                 <Box
                     component="form"
                     sx={{

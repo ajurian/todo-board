@@ -30,7 +30,7 @@ export default function ExtendedThemeProvider({
     children,
 }: ExtendedThemeProviderProps) {
     const [mode, setMode] = useState<Mode>(() =>
-        getDefaultMode(localStorage.getItem("mode"), "dark")
+        getDefaultMode(localStorage.getItem("mode"))
     );
     const [systemMode, setSystemMode] = useState<PaletteMode>(() =>
         getDefaultSystemMode(localStorage.getItem("system-mode"))
