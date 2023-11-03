@@ -63,6 +63,9 @@ export default function TodoList({
             sx={(theme) => ({
                 minWidth: theme.spacing(88),
                 maxWidth: theme.spacing(88),
+                maxHeight: `calc(100vh - ${theme.spacing(26)})`,
+                display: "flex",
+                flexDirection: "column",
             })}
         >
             <Box
@@ -106,15 +109,14 @@ export default function TodoList({
                 addTodoItemStatus === "pending" ||
                 duplicateTodoItemStatus === "pending") && (
                 <Box
-                    sx={(theme) => ({
+                    sx={{
                         display: "flex",
                         flexDirection: "column",
                         mt: 3,
                         gap: 3,
                         px: 3,
-                        maxHeight: theme.spacing(164),
                         overflow: "auto",
-                    })}
+                    }}
                 >
                     {items?.map((props, idx) =>
                         editTodoItemStatus === "pending" &&
