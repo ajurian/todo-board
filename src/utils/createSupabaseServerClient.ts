@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 
 export default function createSupabaseServerClient() {
     const cookieStore = cookies();
+    console.log("APIs:", process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
     const supabase = createServerClient<Database>(
         process.env.NEXT_PUBLIC_SUPABASE_URL,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
