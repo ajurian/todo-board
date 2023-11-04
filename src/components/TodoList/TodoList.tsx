@@ -95,7 +95,10 @@ export default function TodoList({
                         : title}
                 </Typography>
                 {pending || isRenameTodoListPending ? (
-                    <CircularProgress size="1.5rem" sx={{ m: "5px" }} />
+                    <CircularProgress
+                        size="1.5rem"
+                        sx={{ m: "5px", aspectRatio: 1 }}
+                    />
                 ) : (
                     <IconButton
                         size="small"

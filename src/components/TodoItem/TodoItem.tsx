@@ -83,7 +83,10 @@ export default function TodoItem({
                 )}
             </Box>
             {pending ? (
-                <CircularProgress size="1.25rem" sx={{ m: "5px" }} />
+                <CircularProgress
+                    size="1.25rem"
+                    sx={{ m: "5px", aspectRatio: 1 }}
+                />
             ) : (
                 <IconButton
                     size="small"
