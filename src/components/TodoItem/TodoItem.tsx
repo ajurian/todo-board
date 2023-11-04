@@ -8,6 +8,7 @@ import useDeleteTodoItem from "@/hooks/useDeleteTodoItem";
 import { Check, MoreVert } from "@mui/icons-material";
 import { Box, CircularProgress, IconButton, Typography } from "@mui/material";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function TodoItem({
     id = "",
@@ -97,7 +98,12 @@ export default function TodoItem({
                 onViewClick={() => setViewDialogOpen(true)}
                 onEditClick={() => setEditDialogOpen(true)}
                 onDuplicateClick={() =>
-                    onDuplicate?.({ listId, title, description })
+                    onDuplicate?.(
+                        { listId, title, description },
+                        {
+                            onError: ({ message }) => toast.error(message),
+                        }
+                    )
                 }
             />
             <ViewDialog
