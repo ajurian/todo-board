@@ -10,15 +10,26 @@ export default function ViewDialog({
     onClose,
 }: ViewDialogProps) {
     return (
-        <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
-            <DialogTitle>{listTitle}</DialogTitle>
+        <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+            <DialogTitle sx={{ wordBreak: "break-word" }}>
+                {listTitle}
+            </DialogTitle>
             <DialogContent>
                 <Typography variant="subtitle2">Title</Typography>
-                <Typography sx={{ mt: 0.5 }}>{itemTitle}</Typography>
+                <Typography sx={{ mt: 0.5, wordBreak: "break-word" }}>
+                    {itemTitle}
+                </Typography>
                 <Typography variant="subtitle2" sx={{ mt: 3 }}>
                     Description
                 </Typography>
-                <Typography component="pre" sx={{ mt: 0.5 }}>
+                <Typography
+                    component="pre"
+                    sx={{
+                        mt: 0.5,
+                        whiteSpace: "pre-wrap",
+                        wordBreak: "break-word",
+                    }}
+                >
                     {itemDescription}
                 </Typography>
             </DialogContent>
