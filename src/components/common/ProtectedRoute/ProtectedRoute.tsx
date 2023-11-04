@@ -1,13 +1,13 @@
 import Header from "@/components/Header";
 import SessionProvider from "@/context/SessionProvider";
 import TodoProvider from "@/context/TodoProvider";
-import getSession from "@/utils/getSession";
+import getSessionFromServerComponent from "@/utils/getSessionFromServerComponent";
 import { redirect } from "next/navigation";
 
 export default async function ProtectedRoute({
     children,
 }: ProtectedRouteProps) {
-    const session = await getSession();
+    const session = await getSessionFromServerComponent();
 
     if (!session) {
         // user is not signed in yet

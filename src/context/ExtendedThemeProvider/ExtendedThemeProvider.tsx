@@ -66,6 +66,9 @@ export default function ExtendedThemeProvider({
 
     useEffect(() => {
         const media = matchMedia("(prefers-color-scheme: dark)");
+
+        setSystemMode(media.matches ? "dark" : "light");
+
         const colorSchemeChangeListener = (e: MediaQueryListEvent) =>
             setSystemMode(e.matches ? "dark" : "light");
 
