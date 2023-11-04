@@ -1,6 +1,6 @@
 import createSupabaseServerClient from "./createSupabaseServerClient";
 
-export default async function getSession() {
+export default async function getSessionFromServer() {
     const supabase = createSupabaseServerClient();
     const { data, error } = await supabase.auth.getSession();
 
