@@ -56,8 +56,12 @@ export async function middleware(request: NextRequest) {
         }
     );
 
-    // refresh session if necessary
-    await supabase.auth.getSession();
+    try {
+        // refresh session if necessary
+        await supabase.auth.getSession();
+    } catch (e) {
+        console.error(e);
+    }
 
     return response;
 }
