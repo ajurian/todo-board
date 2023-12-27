@@ -5,7 +5,7 @@ import { Box, Button, Link, Paper, TextField, Typography } from "@mui/material";
 import { FormEventHandler, useCallback, useState } from "react";
 
 export default function SigninPage() {
-    const { signInWithPassword, signInWithGoogle } = useAuth();
+    const { signInWithPassword } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -67,9 +67,6 @@ export default function SigninPage() {
                         Sign in
                     </Button>
                 </Box>
-                <Button fullWidth variant="outlined" onClick={signInWithGoogle}>
-                    Sign in with Google
-                </Button>
                 <Typography variant="body2" textAlign="center">
                     Don&apos;t have an account?{" "}
                     <Link href="/auth/signup">Sign up</Link>

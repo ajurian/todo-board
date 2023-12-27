@@ -16,11 +16,9 @@ export async function GET(request: Request) {
         });
 
         if (!error) {
-            return NextResponse.redirect(
-                new URL(`/${next.slice(1)}`, request.url)
-            );
+            return NextResponse.redirect(next);
         }
     }
 
-    return NextResponse.redirect(new URL("/auth/auth-code-error", request.url));
+    return NextResponse.redirect("/auth/auth-code-error");
 }

@@ -1,7 +1,8 @@
-import createSupabaseServerComponentClient from "./createSupabaseServerComponentClient";
+import { createSupabaseClient } from "@/utils/createSupabaseClient";
+import { cookies } from "next/headers";
 
 export default async function getSessionFromServerComponent() {
-    const supabase = createSupabaseServerComponentClient();
+    const supabase = createSupabaseClient(cookies());
     const { data, error } = await supabase.auth.getSession();
 
     if (error) {

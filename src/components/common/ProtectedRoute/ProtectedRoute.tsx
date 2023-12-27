@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import SessionProvider from "@/context/SessionProvider";
 import TodoProvider from "@/context/TodoProvider";
 import getSessionFromServerComponent from "@/utils/getSessionFromServerComponent";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export default async function ProtectedRoute({

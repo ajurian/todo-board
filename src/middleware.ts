@@ -9,8 +9,8 @@ export async function middleware(request: NextRequest) {
     });
 
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         {
             cookies: {
                 get(name: string) {
@@ -22,16 +22,10 @@ export async function middleware(request: NextRequest) {
                         value,
                         ...options,
                     });
-
                     response = NextResponse.next({
                         request: {
                             headers: request.headers,
                         },
-                    });
-                    response.cookies.set({
-                        name,
-                        value,
-                        ...options,
                     });
                 },
                 remove(name: string, options: CookieOptions) {
@@ -40,23 +34,16 @@ export async function middleware(request: NextRequest) {
                         value: "",
                         ...options,
                     });
-
                     response = NextResponse.next({
                         request: {
                             headers: request.headers,
                         },
-                    });
-                    response.cookies.set({
-                        name,
-                        value: "",
-                        ...options,
                     });
                 },
             },
         }
     );
 
-    // refresh session if necessary
     await supabase.auth.getSession();
 
     return response;

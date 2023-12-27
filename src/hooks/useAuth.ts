@@ -30,22 +30,6 @@ export default function useAuth() {
         return error;
     };
 
-    const signInWithGoogle = async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: "google",
-            options: {
-                redirectTo: `${location.origin}/auth/callback`,
-                queryParams: {
-                    access_type: "offline",
-                    prompt: "consent",
-                },
-            },
-        });
-        router.refresh();
-
-        return error;
-    };
-
     const signOut = async () => {
         const { error } = await supabase.auth.signOut();
         router.refresh();
@@ -53,5 +37,5 @@ export default function useAuth() {
         return error;
     };
 
-    return { signUp, signInWithPassword, signInWithGoogle, signOut };
+    return { signUp, signInWithPassword, signOut };
 }

@@ -3,6 +3,7 @@ import ExtendedThemeProvider from "@/context/ExtendedThemeProvider";
 import ReactQueryProvider from "@/context/ReactQueryProvider";
 import "@fontsource/roboto";
 import { Metadata } from "next";
+import { cookies } from "next/headers";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
